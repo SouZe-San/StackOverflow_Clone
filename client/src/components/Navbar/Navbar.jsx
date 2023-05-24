@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import Avatar from "../Avatar/Avatar";
 // Import style sheet
 import "./style.scss";
 // ICON links
@@ -10,9 +10,8 @@ import search from "../../assets/search-solid.svg";
 
 const Navbar = () => {
   // Define variables
-  // const [user, setUser] = useEffect(null);
-  // const [isloged, setIsloged] = useEffect(false);
-  const user = null;
+  const [User, setUser] = useState(null);
+  // const User = null;
   return (
     <nav className="main_nav">
       <div className="navbar">
@@ -40,12 +39,22 @@ const Navbar = () => {
           </form>
         </div>
         <div className="end-nav">
-          {user === null ? (
+          {User === null ? (
             <Link to="/Auth" className="nav-item nav-links">
               Log in
             </Link>
           ) : (
-            <></>
+            <>
+              <Avatar backgroundColor="#009dff" px="14px" py="6px" borderRadius="50%" color="white">
+                <Link
+                  to={`/Users/${User?.result?._id}`}
+                  style={{ color: "white", textDecoration: "none" }}
+                >
+                  {User.result.name.charAt(0).toUpperCase()}
+                </Link>
+              </Avatar>
+              <button className="nav-item nav-links">Log out</button>
+            </>
           )}
         </div>
       </div>
