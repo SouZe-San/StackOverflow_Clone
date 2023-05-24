@@ -53,8 +53,8 @@
                 font-size: small;
                 font-weight: 500;
                 text-decoration: none;
-                color: rgb(69, 69, 69);
-                transition: 0.2s;
+                color: #454545;
+                transition: all 0.3s;
 
                 &:hover {
                     background-color: rgb(226, 226, 226);
@@ -63,8 +63,8 @@
 
             .nav-btn {
                 cursor: pointer;
-                border-radius: 20px;
-                padding: 10px 20px;
+                border-radius: 25px;
+                padding: 8px 23px;
             }
 
             form {
@@ -94,7 +94,7 @@
             align-items: center;
 
             .nav-links {
-                padding: 7px 13px;
+                padding: 4px 15px;
                 border: solid 1px blue;
                 border-radius: 3px;
                 background-color: #e7f8fe;

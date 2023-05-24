@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
-// eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 // Import style sheet
@@ -10,7 +9,10 @@ import logo from "../../assets/logo.png";
 import search from "../../assets/search-solid.svg";
 
 const Navbar = () => {
-  let user = null;
+  // Define variables
+  // const [user, setUser] = useEffect(null);
+  // const [isloged, setIsloged] = useEffect(false);
+  const user = null;
   return (
     <nav className="main_nav">
       <div className="navbar">
