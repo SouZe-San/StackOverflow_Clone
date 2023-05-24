@@ -1,1 +1,8 @@
 node_modules/
+.vscode/*
+
+.client/npm-debug.log*
+.client/yarn-debug.log*
+.client/yarn-error.log*
+.client/pnpm-debug.log*
+.client/lerna-debug.log*
