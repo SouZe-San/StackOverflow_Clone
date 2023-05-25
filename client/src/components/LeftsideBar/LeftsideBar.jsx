@@ -7,17 +7,17 @@ import { NavLink } from "react-router-dom";
 import Globe from "../../assets/Globe.svg";
 
 const LeftsideBar = ({ slideIn, handleSlideIn }) => {
-  const slideInStyle = {
-    transform: "translateX(0%)",
-  };
+  // const slideInStyle = {
+  //   transform: "translateX(0%)",
+  // };
 
-  const slideOutStyle = {
-    transform: "translateX(-100%)",
-  };
+  // const slideOutStyle = {
+  //   transform: "translateX(-100%)",
+  // };
   return (
-    <div className="left-sidebar" style={slideIn ? slideInStyle : slideOutStyle}>
+    <div className="left-sidebar">
       <nav className="side-nav">
-        <button onClick={() => handleSlideIn()} className="nav-btn">
+        <button className="nav-btn">
           <NavLink to="/" className="side-nav-links" activeclassname="active">
             <p>Home</p>
           </NavLink>
@@ -26,7 +26,7 @@ const LeftsideBar = ({ slideIn, handleSlideIn }) => {
           <div>
             <p>PUBLIC</p>
           </div>
-          <button onClick={() => handleSlideIn()} className="nav-btn">
+          <button className="nav-btn">
             <NavLink to="/Questions" className="side-nav-links" activeclassname="active">
               <img src={Globe} alt="Globe" />
               <p style={{ paddingLeft: "10px" }}> Questions </p>
