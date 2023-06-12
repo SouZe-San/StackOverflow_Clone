@@ -19,3 +19,7 @@ client/*.ntvs*
 client/*.njsproj
 client/*.sln
 client/*.sw?
+
+# Server Folder
+
+server/notes.txt

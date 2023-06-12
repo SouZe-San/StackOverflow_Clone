@@ -47,7 +47,7 @@ const AskQuestion = () => {
           <div className="ask-form-container">
             <label htmlFor="ask-ques-title">
               <h4>Title</h4>
-              <p>Be specific and imagine you’re asking a question to another person</p>
+              <p>Be specific and imagine you're asking a question to another person</p>
               <input
                 type="text"
                 id="ask-ques-title"
