@@ -89,6 +89,7 @@ const QuestionDetails = () => {
             .filter((question) => question._id === id)
             .map((question) => (
               <div key={question._id}>
+                {/* -----  Details of Questions -----   */}
                 <section className="question-details-container">
                   <h1>{question.questionTitle}</h1>
                   <div className="question-details-container-2">
@@ -154,6 +155,8 @@ const QuestionDetails = () => {
                     </div>
                   </div>
                 </section>
+
+                {/* Display Others Answers */}
                 {question.noOfAnswers !== 0 && (
                   <section>
                     <h3>{question.noOfAnswers} Answers</h3>
@@ -164,6 +167,8 @@ const QuestionDetails = () => {
                     />
                   </section>
                 )}
+
+                {/* Start Writing all your Answers */}
                 <section className="post-ans-container">
                   <h3>Your Answer</h3>
                   <form
