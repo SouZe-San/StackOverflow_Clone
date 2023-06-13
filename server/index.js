@@ -1,15 +1,17 @@
-const mongoose = require("mongoose");
-const app = require("express")();
-const http = require("http").Server(app);
+import express from "express";
 
-const uri =
-  "mongodb+srv://soumyajitmondal:mongoData00base@clone-database.dhxhxa6.mongodb.net/?retryWrites=true&w=majority";
-mongoose.connect(uri);
-const User = require("./module/user");
+// Import Other File
+import connectDB from "./dataConnect.js";
 
-http.listen(3000, () => {
+// Start The Express
+const app = express();
+
+// MongoDb Atlas connection
+connectDB();
+
+// All Express Routes
+
+app.listen(3000, () => {
   console.log("I am Running");
+  console.log(`server running on port 3000`);
 });
-//   mongodb+srv://soumyajitmondal:<password>@clone-database.dhxhxa6.mongodb.net/?retryWrites=true&w=majority
-
-// // Create a MongoClient with a MongoClientOptions object to set the Stable API version

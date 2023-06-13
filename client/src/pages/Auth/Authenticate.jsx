@@ -1,8 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
+
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import "./style.scss";
 //import Components
 import SideDetails from "./SideDetails";
+import { signup, login } from "../../actions/auth";
 
 //Imports icon
 import icon from "../../assets/icon.png";
@@ -14,9 +18,15 @@ const Authenticate = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   //   Functions
   const handleSwitch = () => {
     setIsSignup(!isSignup);
+    setName("");
+    setEmail("");
+    setPassword("");
   };
 
   const handleSubmit = (e) => {
@@ -28,6 +38,9 @@ const Authenticate = () => {
       if (!name) {
         alert("Enter a name to continue");
       }
+      dispatch(signup({ name, email, password }, navigate));
+    } else {
+      dispatch(login({ email, password }, navigate));
     }
   };
 
