@@ -1,36 +1,36 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./style.scss";
+import { askQuestion } from "../../actions/question";
 
 const AskQuestion = () => {
   const [questionTitle, setQuestionTitle] = useState("");
   const [questionBody, setQuestionBody] = useState("");
   const [questionTags, setQuestionTags] = useState("");
 
-  // const dispatch = useDispatch();
-  // const User = useSelector((state) => state.currentUserReducer);
-  const User = 1;
+  const dispatch = useDispatch();
+  const User = useSelector((state) => state.currentUserReducer);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (User) {
-    //   if (questionTitle && questionBody && questionTags) {
-    //     dispatch(
-    //       askQuestion(
-    //         {
-    //           questionTitle,
-    //           questionBody,
-    //           questionTags,
-    //           userPosted: User.result.name,
-    //         },
-    //         navigate
-    //       )
-    //     );
-    //   } else alert("Please enter all the fields");
-    // } else alert("Login to ask question");
+    if (User) {
+      if (questionTitle && questionBody && questionTags) {
+        dispatch(
+          askQuestion(
+            {
+              questionTitle,
+              questionBody,
+              questionTags,
+              userPosted: User.result.name,
+            },
+            navigate
+          )
+        );
+      } else alert("Please enter all the fields");
+    } else alert("Login to ask question");
   };
 
   const handleEnter = (e) => {
@@ -47,7 +47,7 @@ const AskQuestion = () => {
           <div className="ask-form-container">
             <label htmlFor="ask-ques-title">
               <h4>Title</h4>
-              <p>Be specific and imagine you're asking a question to another person</p>
+              <p>Be specific and imagine you are asking a question to another person</p>
               <input
                 type="text"
                 id="ask-ques-title"

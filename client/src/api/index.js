@@ -12,7 +12,10 @@ const API = axios.create({
 //   return req;
 // });
 
-// Authentication
+// Authentication Routes
 
 export const logIn = (authData) => API.post("/user/login", authData);
 export const signUp = (authData) => API.post("/user/signup", authData);
+
+// Question Routes
+export const postQuestion = (questionData) => API.post("/questions/Ask", questionData);

@@ -68,7 +68,7 @@ const Navbar = () => {
             </Link>
           ) : (
             <>
-              <Avatar backgroundColor="#009dff" px="14px" py="6px" borderRadius="50%" color="white">
+              <Avatar backgroundColor="#009dff" px="12px" py="7px" borderRadius="50%" color="white">
                 <Link
                   to={`/Users/${User?.result?._id}`}
                   style={{ color: "white", textDecoration: "none" }}

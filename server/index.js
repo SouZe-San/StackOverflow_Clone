@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 // Import Other File
 import connectDB from "./dataConnect.js";
 import userRoutes from "./routes/users.js";
+import questionRoutes from "./routes/Question.js";
 
 dotenv.config();
 // MongoDb Atlas connection
@@ -19,6 +20,7 @@ app.use(cors());
 
 // All Express Routes
 app.use("/user", userRoutes);
+app.use("/questions", questionRoutes);
 
 // PORT
 const PORT = process.env.PORT || 5000;
