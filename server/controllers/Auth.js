@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
 // Import Module
-import users from "../module/auth";
+import users from "../models/auth.js";
 
 //@ Sign Up Mechanism ---------------------
 
