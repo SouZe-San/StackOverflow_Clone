@@ -1,17 +1,40 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
 import Avatar from "../Avatar/Avatar";
+import { setCurrentUser } from "../../actions/currentUser";
 // Import style sheet
 import "./style.scss";
+
 // ICON links
 import logo from "../../assets/logo.png";
 import search from "../../assets/search-solid.svg";
 
 const Navbar = () => {
   // Define variables
-  const [User, setUser] = useState(null);
-  // const User = null;
+  let User = useSelector((state) => state.currentUserReducer);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  // Functions
+
+  const handleLogout = () => {
+    dispatch({ type: "LOGOUT" });
+    navigate("/");
+    dispatch(setCurrentUser(null));
+  };
+  useEffect(() => {
+    // const token = User?.token;
+    // if (token) {
+    //   const decodedToken = decode(token);
+    //   if (decodedToken.exp * 1000 < new Date().getTime()) {
+    //     handleLogout();
+    //   }
+    // }
+    dispatch(setCurrentUser(JSON.parse(localStorage.getItem("Profile"))));
+  }, [dispatch]);
   return (
     <nav className="main_nav">
       <div className="navbar">
@@ -53,7 +76,9 @@ const Navbar = () => {
                   {User.result.name.charAt(0).toUpperCase()}
                 </Link>
               </Avatar>
-              <button className="nav-item nav-links">Log out</button>
+              <button className="nav-item nav-links" onClick={handleLogout}>
+                Log out
+              </button>
             </>
           )}
         </div>
