@@ -14,7 +14,7 @@ import auth from "../middleware/auth.js";
 
 // Routes
 router.post("/Ask", AskQuestion);
-// router.get("/get", getAllQuestions);
+router.get("/get", getAllQuestions);
 // router.delete("/delete/:id", auth, deleteQuestion);
 // router.patch("/vote/:id", auth, voteQuestion);
 

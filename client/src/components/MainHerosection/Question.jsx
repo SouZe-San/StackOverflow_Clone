@@ -9,8 +9,7 @@ function Question({ question }) {
   return (
     <div className="display-question-container">
       <div className="display-votes-ans">
-        {/* <p>{question.upVote.length - question.downVote.length}</p> */}
-        <p>{question.upVotes - question.downVotes}</p>
+        <p>{question.upVote.length - question.downVote.length}</p>
         <p>votes</p>
       </div>
       <div className="display-votes-ans">
@@ -30,7 +29,7 @@ function Question({ question }) {
             ))}
           </div>
           <p className="display-time">
-            asked ..... Souze
+            asked {question.askedOn} {question.userPosted}
             {/* {moment(question.askedOn).fromNow()} {question.userPosted} */}
           </p>
         </div>

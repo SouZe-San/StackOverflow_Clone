@@ -19,3 +19,4 @@ export const signUp = (authData) => API.post("/user/signup", authData);
 
 // Question Routes
 export const postQuestion = (questionData) => API.post("/questions/Ask", questionData);
+export const getAllQuestions = () => API.get("/questions/get");
