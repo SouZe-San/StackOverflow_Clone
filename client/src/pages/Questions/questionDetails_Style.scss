@@ -5,6 +5,7 @@
     h1 {
         font-size: revert;
         font-weight: revert;
+
     }
 
 
@@ -69,7 +70,7 @@
 section h3 {
     font-size: revert;
     font-weight: normal;
-    padding: 1rem 0;
+    padding: 1rem 0 0 0;
 }
 
 .question-actions-user {
@@ -166,6 +167,7 @@ section h3 {
     p {
         font-size: 14px;
         line-height: 18px;
+        padding-top: 1rem;
         white-space: pre-line;
     }
 }

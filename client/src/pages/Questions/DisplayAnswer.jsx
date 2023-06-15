@@ -2,12 +2,15 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-// import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import Avatar from "../../components/Avatar/Avatar";
 
 const DisplayAnswer = ({ question }) => {
   const { id } = useParams();
+  const User = useSelector((state) => state.currentUserReducer);
+  const dispatch = useDispatch();
+
   return (
     <div>
       {question.answer.map((ans) => (
