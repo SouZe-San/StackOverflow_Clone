@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { Link } from "react-router-dom";
-
+import moment from "moment";
 import "./question_style.scss";
 
 function Question({ question }) {
@@ -29,8 +29,8 @@ function Question({ question }) {
             ))}
           </div>
           <p className="display-time">
-            asked {question.askedOn} {question.userPosted}
-            {/* {moment(question.askedOn).fromNow()} {question.userPosted} */}
+            asked-
+            {moment(question.askedOn).fromNow()} #{question.userPosted}
           </p>
         </div>
       </div>

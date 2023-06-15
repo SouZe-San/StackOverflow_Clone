@@ -3,10 +3,10 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
+import moment from "moment";
 import Avatar from "../../components/Avatar/Avatar";
 
-const DisplayAnswer = ({ question }) => {
+const DisplayAnswer = ({ question, handleShare }) => {
   const { id } = useParams();
   const User = useSelector((state) => state.currentUserReducer);
   const dispatch = useDispatch();
@@ -18,10 +18,7 @@ const DisplayAnswer = ({ question }) => {
           <p>{ans.answerBody}</p>
           <div className="question-actions-user">
             <div>
-              <button
-                type="button"
-                //   onClick={handleShare}
-              >
+              <button type="button" onClick={handleShare}>
                 Share
               </button>
               {
@@ -36,8 +33,8 @@ const DisplayAnswer = ({ question }) => {
             </div>
             <div>
               <p>
-                answered {ans.answeredOn}
-                {/* {moment(ans.answeredOn).fromNow()} */}
+                answered
+                {moment(ans.answeredOn).fromNow()}
               </p>
               <Link to={`/Users/${ans.userId}`} className="user-link" style={{ color: "#0086d8" }}>
                 <Avatar backgroundColor="lightgreen" px="8px" py="5px" borderRadius="4px">

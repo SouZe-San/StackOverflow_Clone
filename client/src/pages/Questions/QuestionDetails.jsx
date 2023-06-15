@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
+import moment from "moment";
+import copy from "copy-to-clipboard";
+
 // Style sheet
 import "./questionDetails_Style.scss";
 
@@ -25,9 +28,12 @@ const QuestionDetails = () => {
   const Navigate = useNavigate();
   const dispatch = useDispatch();
   const User = useSelector((state) => state.currentUserReducer);
-  // const location = useLocation();
-  // const url = "http://localhost:3000";
 
+  // for copy the url
+  const location = useLocation();
+  const url = "http://localhost:5000";
+
+  // Function for Submit an answer
   const handlePostAns = (e, answerLength) => {
     e.preventDefault();
     if (User === null) {
@@ -48,6 +54,12 @@ const QuestionDetails = () => {
         setAnswer("");
       }
     }
+  };
+
+  // Function for Copy the Url
+  const handleShare = () => {
+    copy(url + location.pathname);
+    alert("Copied url : " + url + location.pathname);
   };
 
   return (
@@ -90,10 +102,7 @@ const QuestionDetails = () => {
                       </div>
                       <div className="question-actions-user">
                         <div>
-                          <button
-                            type="button"
-                            //   onClick={handleShare}
-                          >
+                          <button type="button" onClick={handleShare}>
                             Share
                           </button>
                           {
@@ -108,8 +117,8 @@ const QuestionDetails = () => {
                         </div>
                         <div>
                           <p>
-                            asked {question.askedOn}
-                            {/* {moment(question.askedOn).fromNow()} */}
+                            asked
+                            {moment(question.askedOn).fromNow()}
                           </p>
                           <Link
                             to={`/Users/${question.userId}`}
@@ -134,12 +143,12 @@ const QuestionDetails = () => {
                     <DisplayAnswer
                       key={question._id}
                       question={question}
-                      //   handleShare={handleShare}
+                      handleShare={handleShare}
                     />
                   </section>
                 )}
 
-                {/* Start Writing all your Answers */}
+                {/* **** Start Writing all your Answers **** */}
                 <section className="post-ans-container">
                   <h3>Your Answer</h3>
                   <form
