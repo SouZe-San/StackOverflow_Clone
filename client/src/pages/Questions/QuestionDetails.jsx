@@ -16,9 +16,10 @@ import downvote from "../../assets/sort-down.svg";
 // import component
 import Avatar from "../../components/Avatar/Avatar";
 import DisplayAnswer from "./DisplayAnswer";
-import { postAnswer } from "../../actions/question";
+import { postAnswer, deleteQuestion } from "../../actions/question";
 
 const QuestionDetails = () => {
+  // Collect the id of the question from the url
   const { id } = useParams();
   // For get All questions
   const questionsList = useSelector((state) => state.questionsReducer);
@@ -49,6 +50,7 @@ const QuestionDetails = () => {
             noOfAnswers: answerLength + 1,
             answerBody: Answer,
             userAnswered: User.result.name,
+            UserId: User.result._id,
           })
         );
         setAnswer("");
@@ -60,6 +62,11 @@ const QuestionDetails = () => {
   const handleShare = () => {
     copy(url + location.pathname);
     alert("Copied url : " + url + location.pathname);
+  };
+
+  // Function for delete a question
+  const handleDelete = () => {
+    dispatch(deleteQuestion(id, Navigate));
   };
 
   return (
@@ -106,13 +113,12 @@ const QuestionDetails = () => {
                             Share
                           </button>
                           {
-                            //   User?.result?._id === question?.userId &&
-                            <button
-                              type="button"
-                              // onClick={handleDelete}
-                            >
-                              Delete
-                            </button>
+                            // if the user is posted one of this ques then the delete button will be shown
+                            User?.result?._id === question?.userId && (
+                              <button type="button" onClick={handleDelete}>
+                                Delete
+                              </button>
+                            )
                           }
                         </div>
                         <div>

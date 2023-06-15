@@ -22,15 +22,17 @@ export const fetchAllQuestions = () => async (dispatch) => {
   }
 };
 
-// export const deleteQuestion = (id, navigate) => async (dispatch) => {
-//   try {
-//     await api.deleteQuestion(id);
-//     dispatch(fetchAllQuestions());
-//     navigate("/");
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+// Delete a Question Form db
+export const deleteQuestion = (id, navigate) => async (dispatch) => {
+  try {
+    // send id in api
+    await api.deleteQuestion(id);
+    dispatch(fetchAllQuestions());
+    navigate("/");
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 // export const voteQuestion = (id, value) => async (dispatch) => {
 //   try {

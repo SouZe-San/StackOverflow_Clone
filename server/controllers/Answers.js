@@ -5,8 +5,8 @@ import Questions from "../models/Question.js";
 export const postAnswer = async (req, res) => {
   // get id of the question form url
   const { id: _id } = req.params;
-  const { noOfAnswers, answerBody, userAnswered } = req.body;
-  const userId = req.userId;
+  const { noOfAnswers, answerBody, userAnswered, userId } = req.body;
+  // const userId = req.userId;
 
   //  Check weather the question present or not
   if (!mongoose.Types.ObjectId.isValid(_id)) {

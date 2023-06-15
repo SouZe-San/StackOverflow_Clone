@@ -12,7 +12,7 @@ import { fetchAllQuestions } from "./actions/question";
 // import { fetchAllUsers } from "./actions/users";
 function App() {
   const dispatch = useDispatch();
-
+  // this cause, it can call those fun  every time it reload
   useEffect(() => {
     dispatch(fetchAllQuestions());
     // dispatch(fetchAllUsers());

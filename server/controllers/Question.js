@@ -6,11 +6,11 @@ import Questions from "../models/Question.js";
 //@ Mechanism for Create or Asking Question ----------------
 export const AskQuestion = async (req, res) => {
   const postQuestionData = req.body;
-  const userId = req.userId;
-  const postQuestion = new Questions({ ...postQuestionData, userId });
+  // const userId = req.userId;
+  const postQuestion = new Questions(postQuestionData);
   try {
     await postQuestion.save();
-    res.status(200).json("Posted a question successfully");
+    res.status(200).json("Successfully,Posted a question !!");
   } catch (error) {
     console.log(error);
     res.status(409).json("Couldn't post a new question");
@@ -32,13 +32,14 @@ export const getAllQuestions = async (req, res) => {
 export const deleteQuestion = async (req, res) => {
   const { id: _id } = req.params;
 
+  // Check even Question with This id  present or not
   if (!mongoose.Types.ObjectId.isValid(_id)) {
-    return res.status(404).send("question unavailable...");
+    return res.status(404).send("Question Unavailable...");
   }
 
   try {
     await Questions.findByIdAndRemove(_id);
-    res.status(200).json({ message: "successfully deleted..." });
+    res.status(200).json({ message: "Successfully Deleted..." });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }

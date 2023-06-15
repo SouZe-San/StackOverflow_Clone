@@ -13,13 +13,13 @@ const API = axios.create({
 // });
 
 // Authentication Routes
-
 export const logIn = (authData) => API.post("/user/login", authData);
 export const signUp = (authData) => API.post("/user/signup", authData);
 
-// Question Routes
+// Routes for Question
 export const postQuestion = (questionData) => API.post("/questions/Ask", questionData);
 export const getAllQuestions = () => API.get("/questions/get");
+export const deleteQuestion = (id) => API.delete(`/questions/delete/${id}`);
 
 // Routes for answers
 export const postAnswer = (id, noOfAnswers, answerBody, userAnswered) =>
