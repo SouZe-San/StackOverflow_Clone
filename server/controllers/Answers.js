@@ -37,18 +37,25 @@ const updateNoOfQuestions = async (_id, noOfAnswers) => {
   }
 };
 
+//@ Mechanism for Deleting an Answer
 export const deleteAnswer = async (req, res) => {
   const { id: _id } = req.params;
   const { answerId, noOfAnswers } = req.body;
 
+  // check is this question Id valid or not
   if (!mongoose.Types.ObjectId.isValid(_id)) {
     return res.status(404).send("Question unavailable...");
   }
+
+  // check is answer_id valid or not
   if (!mongoose.Types.ObjectId.isValid(answerId)) {
     return res.status(404).send("Answer unavailable...");
   }
+
+  // reduce the number of the answer
   updateNoOfQuestions(_id, noOfAnswers);
   try {
+    // finding question given by id then, delete(pull) the answer given of Id
     await Questions.updateOne({ _id }, { $pull: { answer: { _id: answerId } } });
     res.status(200).json({ message: "Successfully deleted..." });
   } catch (error) {

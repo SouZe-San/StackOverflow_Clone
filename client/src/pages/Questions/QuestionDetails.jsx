@@ -50,7 +50,7 @@ const QuestionDetails = () => {
             noOfAnswers: answerLength + 1,
             answerBody: Answer,
             userAnswered: User.result.name,
-            UserId: User.result._id,
+            userId: User.result._id,
           })
         );
         setAnswer("");
