@@ -16,11 +16,12 @@ import downvote from "../../assets/sort-down.svg";
 // import component
 import Avatar from "../../components/Avatar/Avatar";
 import DisplayAnswer from "./DisplayAnswer";
-import { postAnswer, deleteQuestion } from "../../actions/question";
+import { postAnswer, deleteQuestion, voteQuestion } from "../../actions/question";
 
 const QuestionDetails = () => {
   // Collect the id of the question from the url
   const { id } = useParams();
+
   // For get All questions
   const questionsList = useSelector((state) => state.questionsReducer);
 
@@ -69,6 +70,26 @@ const QuestionDetails = () => {
     dispatch(deleteQuestion(id, Navigate));
   };
 
+  // Function for Up Voting
+  const handleUpVote = () => {
+    if (User === null) {
+      alert("Login or Signup to up vote a question");
+      Navigate("/Auth");
+    } else {
+      dispatch(voteQuestion(id, "upVote", User.result._id));
+    }
+  };
+
+  // Function for Down voting
+  const handleDownVote = () => {
+    if (User === null) {
+      alert("Login or Signup to down vote a question");
+      Navigate("/Auth");
+    } else {
+      dispatch(voteQuestion(id, "downVote", User.result._id));
+    }
+  };
+
   return (
     <div className="question-details-page">
       {questionsList.data === null ? (
@@ -89,7 +110,7 @@ const QuestionDetails = () => {
                         alt=""
                         width="18"
                         className="votes-icon"
-                        // onClick={handleUpVote}
+                        onClick={handleUpVote}
                       />
                       <p>{question.upVote.length - question.downVote.length}</p>
                       <img
@@ -97,7 +118,7 @@ const QuestionDetails = () => {
                         alt=""
                         width="18"
                         className="votes-icon"
-                        // onClick={handleDownVote}
+                        onClick={handleDownVote}
                       />
                     </div>
                     <div style={{ width: "100%" }}>

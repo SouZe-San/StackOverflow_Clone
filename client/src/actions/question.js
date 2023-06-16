@@ -36,14 +36,15 @@ export const deleteQuestion = (id, navigate) => async (dispatch) => {
   }
 };
 
-// export const voteQuestion = (id, value) => async (dispatch) => {
-//   try {
-//     await api.voteQuestion(id, value);
-//     dispatch(fetchAllQuestions());
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+// Vote Up or Down for any question and send result to db
+export const voteQuestion = (id, value, userId) => async (dispatch) => {
+  try {
+    await api.voteQuestion(id, value, userId);
+    dispatch(fetchAllQuestions());
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 // Get Answer of an question and update in db
 export const postAnswer = (answerData) => async (dispatch) => {

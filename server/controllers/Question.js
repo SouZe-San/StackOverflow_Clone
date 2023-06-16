@@ -46,20 +46,25 @@ export const deleteQuestion = async (req, res) => {
 };
 
 //@ Mechanism for Voting ans/ Question ----------------
+
+// Vote work like  0 <- - ---[1]---+-> 2
 export const voteQuestion = async (req, res) => {
   const { id: _id } = req.params;
-  const { value } = req.body;
-  const userId = req.userId;
+  const { value, userId } = req.body;
+  // const userId = req.userId;
 
+  // try to find is question exist or not
   if (!mongoose.Types.ObjectId.isValid(_id)) {
     return res.status(404).send("question unavailable...");
   }
 
   try {
     const question = await Questions.findById(_id);
+    // get voting count
     const upIndex = question.upVote.findIndex((id) => id === String(userId));
     const downIndex = question.downVote.findIndex((id) => id === String(userId));
 
+    // Try to Vote increase
     if (value === "upVote") {
       if (downIndex !== -1) {
         question.downVote = question.downVote.filter((id) => id !== String(userId));
@@ -69,6 +74,8 @@ export const voteQuestion = async (req, res) => {
       } else {
         question.upVote = question.upVote.filter((id) => id !== String(userId));
       }
+
+      // Try to Decrease the vote
     } else if (value === "downVote") {
       if (upIndex !== -1) {
         question.upVote = question.upVote.filter((id) => id !== String(userId));
