@@ -6,7 +6,7 @@ import "./style.scss";
 import { NavLink } from "react-router-dom";
 import Globe from "../../assets/Globe.svg";
 
-const LeftsideBar = ({ slideIn, handleSlideIn }) => {
+const LeftsideBar = () => {
   // const slideInStyle = {
   //   transform: "translateX(0%)",
   // };
@@ -32,7 +32,10 @@ const LeftsideBar = ({ slideIn, handleSlideIn }) => {
               <p style={{ paddingLeft: "10px" }}> Questions </p>
             </NavLink>
           </button>
-          <button onClick={() => handleSlideIn()} className="nav-btn">
+          <button
+            //  onClick={() => handleSlideIn()}
+            className="nav-btn"
+          >
             <NavLink
               to="/Tags"
               className="side-nav-links"
@@ -42,7 +45,10 @@ const LeftsideBar = ({ slideIn, handleSlideIn }) => {
               <p>Tags</p>
             </NavLink>
           </button>
-          <button onClick={() => handleSlideIn()} className="nav-btn">
+          <button
+            //  onClick={() => handleSlideIn()}
+            className="nav-btn"
+          >
             <NavLink
               to="/Users"
               className="side-nav-links"
