@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from "react";
 
@@ -10,12 +11,10 @@ import { tagsList } from "./tagDetails";
 // Style Sheet
 import "./tag_style.scss";
 
-const Tags = () => {
+const Tags = ({ slideIn, handleSlideIn }) => {
   return (
     <div className="home-container-1">
-      <LeftsideBar
-      //   slideIn={slideIn} handleSlideIn={handleSlideIn}
-      />
+      <LeftsideBar slideIn={slideIn} handleSlideIn={handleSlideIn} />
       <div className="home-container-2" style={{ flexDirection: "column", paddingRight: "1rem" }}>
         <h1 className="tags-h1">Tags</h1>
         <p className="tags-p">

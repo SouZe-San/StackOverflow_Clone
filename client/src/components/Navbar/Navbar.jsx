@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
@@ -14,7 +15,7 @@ import "./style.scss";
 import logo from "../../assets/logo.png";
 import search from "../../assets/search-solid.svg";
 
-const Navbar = () => {
+const Navbar = ({ handleSlideIn }) => {
   // Define variables
   let User = useSelector((state) => state.currentUserReducer);
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ const Navbar = () => {
   return (
     <nav className="main_nav">
       <div className="navbar">
-        <button className="humbugger-icon">
+        <button className="humbugger-icon" onClick={() => handleSlideIn()}>
           <i className="ri-menu-fill"></i>
         </button>
 

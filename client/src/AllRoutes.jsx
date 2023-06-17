@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { Routes, Route } from "react-router-dom";
@@ -12,17 +13,26 @@ import Tags from "./pages/Tags/Tags";
 import Users from "./pages/Users/Users";
 import UserProfile from "./pages/UserProfile/UserProfile";
 
-const AllRoutes = () => {
+const AllRoutes = ({ slideIn, handleSlideIn }) => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Home slideIn={slideIn} handleSlideIn={handleSlideIn} />} />
       <Route path="/Auth" element={<Authenticate />} />
       <Route path="/AskQuestion" element={<AskQuestion />} />
-      <Route path="/Questions" element={<Questions />} />
-      <Route path="/Questions/:id" element={<DisplayQuestion />} />
-      <Route path="/Tags" element={<Tags />} />
-      <Route path="/Users" element={<Users />} />
-      <Route path="/Users/:id" element={<UserProfile />} />
+      <Route
+        path="/Questions"
+        element={<Questions slideIn={slideIn} handleSlideIn={handleSlideIn} />}
+      />
+      <Route
+        path="/Questions/:id"
+        element={<DisplayQuestion slideIn={slideIn} handleSlideIn={handleSlideIn} />}
+      />
+      <Route path="/Tags" element={<Tags slideIn={slideIn} handleSlideIn={handleSlideIn} />} />
+      <Route path="/Users" element={<Users slideIn={slideIn} handleSlideIn={handleSlideIn} />} />
+      <Route
+        path="/Users/:id"
+        element={<UserProfile slideIn={slideIn} handleSlideIn={handleSlideIn} />}
+      />
     </Routes>
   );
 };

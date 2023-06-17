@@ -1,6 +1,6 @@
 import * as api from "../api";
 
-//@ Mechanism for get all Users info for db
+// for get all Users info for db
 export const fetchAllUsers = () => async (dispatch) => {
   try {
     const { data } = await api.getAllUsers();
@@ -10,6 +10,7 @@ export const fetchAllUsers = () => async (dispatch) => {
   }
 };
 
+// Get Update Information About Logged In User
 export const updateProfile = (id, updateData) => async (dispatch) => {
   try {
     const { data } = await api.updateProfile(id, updateData);

@@ -25,6 +25,7 @@ export const getAllUsers = async (req, res) => {
   }
 };
 
+//@ Mechanism For Update the Users Information
 export const updateProfile = async (req, res) => {
   const { id: _id } = req.params;
   const { name, about, tags } = req.body;

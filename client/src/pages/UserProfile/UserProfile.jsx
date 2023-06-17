@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
@@ -12,7 +13,7 @@ import ProfileBio from "./ProfileBio";
 
 // Stylesheet
 import "./profile_style.scss";
-const UserProfile = () => {
+const UserProfile = ({ slideIn, handleSlideIn }) => {
   const { id } = useParams();
   const users = useSelector((state) => state.usersReducer);
   const currentProfile = users.filter((user) => user._id === id)[0];
@@ -21,9 +22,7 @@ const UserProfile = () => {
 
   return (
     <div className="home-container-1">
-      <LeftsideBar
-      //    slideIn={slideIn} handleSlideIn={handleSlideIn}
-      />
+      <LeftsideBar slideIn={slideIn} handleSlideIn={handleSlideIn} />
       <div className="home-container-2">
         <section style={{ width: "calc(100% - 300px - 24px)" }}>
           <div className="user-details-container">

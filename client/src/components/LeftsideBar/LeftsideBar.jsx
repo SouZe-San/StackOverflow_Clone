@@ -6,16 +6,17 @@ import "./style.scss";
 import { NavLink } from "react-router-dom";
 import Globe from "../../assets/Globe.svg";
 
-const LeftsideBar = () => {
-  // const slideInStyle = {
-  //   transform: "translateX(0%)",
-  // };
+const LeftsideBar = ({ slideIn, handleSlideIn }) => {
+  const slideInStyle = {
+    transform: "translateX(0%)",
+  };
 
-  // const slideOutStyle = {
-  //   transform: "translateX(-100%)",
-  // };
+  const slideOutStyle = {
+    transform: "translateX(-100%)",
+  };
   return (
-    <div className="left-sidebar">
+    //
+    <div className="left-sidebar" style={slideIn ? slideInStyle : slideOutStyle}>
       <nav className="side-nav">
         <button className="nav-btn">
           <NavLink to="/" className="side-nav-links" activeclassname="active">
@@ -32,10 +33,7 @@ const LeftsideBar = () => {
               <p style={{ paddingLeft: "10px" }}> Questions </p>
             </NavLink>
           </button>
-          <button
-            //  onClick={() => handleSlideIn()}
-            className="nav-btn"
-          >
+          <button onClick={() => handleSlideIn()} className="nav-btn">
             <NavLink
               to="/Tags"
               className="side-nav-links"
@@ -45,10 +43,7 @@ const LeftsideBar = () => {
               <p>Tags</p>
             </NavLink>
           </button>
-          <button
-            //  onClick={() => handleSlideIn()}
-            className="nav-btn"
-          >
+          <button onClick={() => handleSlideIn()} className="nav-btn">
             <NavLink
               to="/Users"
               className="side-nav-links"

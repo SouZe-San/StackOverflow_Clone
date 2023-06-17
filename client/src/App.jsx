@@ -19,11 +19,25 @@ function App() {
     dispatch(fetchAllUsers());
   }, [dispatch]);
 
+  const [slideIn, setSlideIn] = useState(true);
+
+  useEffect(() => {
+    if (window.innerWidth <= 760) {
+      setSlideIn(false);
+    }
+  }, []);
+
+  const handleSlideIn = () => {
+    if (window.innerWidth <= 760) {
+      setSlideIn((state) => !state);
+    }
+  };
+
   return (
     <>
       <Router>
-        <Navbar />
-        <AllRoutes />
+        <Navbar handleSlideIn={handleSlideIn} />
+        <AllRoutes slideIn={slideIn} handleSlideIn={handleSlideIn} />
       </Router>
     </>
   );
