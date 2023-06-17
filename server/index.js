@@ -19,6 +19,10 @@ app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
+// app.use("/", (req, res) => {
+//   res.send("Backend Server Running !!");
+// });
+
 // All Express Routes
 app.use("/user", userRoutes);
 app.use("/questions", questionRoutes);

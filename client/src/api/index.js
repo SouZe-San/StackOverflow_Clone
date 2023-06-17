@@ -31,3 +31,4 @@ export const deleteAnswer = (id, answerId, noOfAnswers) =>
 
 // Routes for Users
 export const getAllUsers = () => API.get("/user/getAllUsers");
+export const updateProfile = (id, updateData) => API.patch(`/user/update/${id}`, updateData);

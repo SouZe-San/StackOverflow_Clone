@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-// import { updateProfile } from "../../actions/users";
+import { updateProfile } from "../../actions/users";
 const EditProfileForm = ({ currentUser, setSwitch }) => {
   // All Variables
   const [name, setName] = useState(currentUser?.result?.name);
@@ -11,23 +11,20 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
   const dispatch = useDispatch();
 
   //   function for Submit the from
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (tags[0] === "" || tags.length === 0) {
-  //     alert("Update tags field");
-  //   } else {
-  //     dispatch(updateProfile(currentUser?.result?._id, { name, about, tags }));
-  //   }
-  //   setSwitch(false);
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (tags[0] === "" || tags.length === 0) {
+      alert("Update tags field");
+    } else {
+      dispatch(updateProfile(currentUser?.result?._id, { name, about, tags }));
+    }
+    setSwitch(false);
+  };
   return (
     <div style={{ marginBottom: "2rem" }}>
       <h1 className="edit-profile-title">Edit Your Profile</h1>
       <h2 className="edit-profile-title-2">Public information</h2>
-      <form
-        className="edit-profile-form"
-        //   onSubmit={handleSubmit}
-      >
+      <form className="edit-profile-form" onSubmit={handleSubmit}>
         <label htmlFor="name">
           <h3>Display name</h3>
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
