@@ -5,6 +5,7 @@ import "./style.scss";
 
 import { NavLink } from "react-router-dom";
 import Globe from "../../assets/Globe.svg";
+import BotIcon from "../Boticon/BotIcon";
 
 const LeftsideBar = ({ slideIn, handleSlideIn }) => {
   const slideInStyle = {
@@ -53,6 +54,7 @@ const LeftsideBar = ({ slideIn, handleSlideIn }) => {
               <p>Users</p>
             </NavLink>
           </button>
+          <BotIcon />
         </div>
       </nav>
     </div>

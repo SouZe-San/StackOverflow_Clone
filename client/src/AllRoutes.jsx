@@ -12,6 +12,8 @@ import DisplayQuestion from "./pages/Questions/DisplayQuestion";
 import Tags from "./pages/Tags/Tags";
 import Users from "./pages/Users/Users";
 import UserProfile from "./pages/UserProfile/UserProfile";
+import OtpAuth from "./pages/OTPauth/OtpAuth";
+import ChatbotPage from "./pages/Chatbot/ChatbotPage";
 
 const AllRoutes = ({ slideIn, handleSlideIn }) => {
   return (
@@ -32,6 +34,13 @@ const AllRoutes = ({ slideIn, handleSlideIn }) => {
       <Route
         path="/Users/:id"
         element={<UserProfile slideIn={slideIn} handleSlideIn={handleSlideIn} />}
+      />
+
+      <Route path="/OtpAuth" element={<OtpAuth />} />
+
+      <Route
+        path="/Chatbot"
+        element={<ChatbotPage slideIn={slideIn} handleSlideIn={handleSlideIn} />}
       />
     </Routes>
   );

@@ -34,6 +34,10 @@
 
                 &:hover {
                     color: black;
+
+                    i {
+                        color: #ff8300;
+                    }
                 }
             }
         }
@@ -53,6 +57,10 @@
     color: black !important;
     background-color: rgb(239, 238, 238) !important;
     border-right: solid 3px #ef8236;
+
+    i {
+        color: #ff8300 !important;
+    }
 }
 
 @media screen and (max-width: 760px) {

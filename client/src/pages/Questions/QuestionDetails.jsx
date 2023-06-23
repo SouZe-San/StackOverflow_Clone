@@ -33,7 +33,8 @@ const QuestionDetails = () => {
 
   // for copy the url
   const location = useLocation();
-  const url = "http://localhost:5000";
+  // const url = "http://localhost:5000";
+  const url = "https://stackoverflowbackend-oucf.onrender.com";
 
   // Function for Submit an answer
   const handlePostAns = (e, answerLength) => {

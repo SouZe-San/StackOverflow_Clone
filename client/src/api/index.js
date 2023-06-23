@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API = axios.create({
   baseURL: "http://localhost:5000",
-  // baseURL: "https://stack-overflow-eight.vercel.app/",
+  // baseURL: "https://stackoverflowbackend-oucf.onrender.com",
 });
 
 API.interceptors.request.use((req) => {
@@ -32,3 +32,10 @@ export const deleteAnswer = (id, answerId, noOfAnswers) =>
 // Routes for Users
 export const getAllUsers = () => API.get("/user/getAllUsers");
 export const updateProfile = (id, updateData) => API.patch(`/user/update/${id}`, updateData);
+
+// Routes for Verify
+export const numberSend = (mobileData) => API.post("/user/otpsend", mobileData);
+export const otpVerify = (otpData) => API.post("/user/verify", otpData);
+
+// Chatbot Routes
+export const sendChatbot = (textDAta) => API.post("/chatbot/send", textDAta);
