@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./style.scss";
 import { askQuestion } from "../../actions/question";
+import { subscriptionValidationCheck } from "../../actions/subscription";
 
 const AskQuestion = () => {
   const [questionTitle, setQuestionTitle] = useState("");
@@ -11,26 +12,59 @@ const AskQuestion = () => {
   const [questionTags, setQuestionTags] = useState("");
 
   const dispatch = useDispatch();
-  const User = useSelector((state) => state.currentUserReducer);
   const navigate = useNavigate();
+
+  const User = useSelector((state) => state.currentUserReducer);
+  const subscriptionDetails = User?.result?.subscription;
+
+  let numberOfQues = subscriptionDetails?.attempts;
+
+  // Checking the user subscription-Pack's Validity expire or not
+  useEffect(() => {
+    const id = User?.result?._id;
+    dispatch(subscriptionValidationCheck({ id }));
+  }, [User, dispatch]);
+
+  useEffect(() => {
+    if (User !== null) {
+      if (!localStorage.getItem("TryLeft")) {
+        // If there no data create a data ( it happen after 24hrs)
+        localStorage.setItem("TryLeft", JSON.stringify({ attempt: numberOfQues }));
+      }
+    }
+  }, [User, numberOfQues]);
+
+  // If After Create , Get data
+  if (localStorage.getItem("TryLeft")) {
+    var attempt_Left = JSON.parse(localStorage.getItem("TryLeft")).attempt;
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (User) {
-      if (questionTitle && questionBody && questionTags) {
-        dispatch(
-          askQuestion(
-            {
-              questionTitle,
-              questionBody,
-              questionTags,
-              userPosted: User.result.name,
-              userId: User.result._id,
-            },
-            navigate
-          )
-        );
-      } else alert("Please enter all the fields");
+      // if check Subscription
+      if (attempt_Left === 0) {
+        alert("Number of Post Exceed the limit \nAdvance Your Subscription !! ");
+      } else {
+        if (questionTitle && questionBody && questionTags) {
+          // Decrease the Number
+          attempt_Left = attempt_Left - 1;
+          localStorage.setItem("TryLeft", JSON.stringify({ attempt: attempt_Left }));
+
+          dispatch(
+            askQuestion(
+              {
+                questionTitle,
+                questionBody,
+                questionTags,
+                userPosted: User.result.name,
+                userId: User.result._id,
+              },
+              navigate
+            )
+          );
+        } else alert("Please enter all the fields");
+      }
     } else alert("Login to ask question");
   };
 

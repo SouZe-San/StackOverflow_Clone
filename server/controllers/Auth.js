@@ -29,7 +29,7 @@ export const signup = async (req, res) => {
 
     // Create the Token which is expire after 1 hrs of logIn
     const token = jwt.sign({ email: newUser.email, id: newUser._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
+      expiresIn: "24h",
     });
 
     // Send Response
@@ -60,9 +60,13 @@ export const login = async (req, res) => {
     }
 
     // process.env.JWT_SECRET;
-    const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, "HelloMotto", {
-      expiresIn: "1h",
-    });
+    const token = jwt.sign(
+      { email: existingUser.email, id: existingUser._id },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "24h",
+      }
+    );
     res.status(200).json({ result: existingUser, token });
   } catch (error) {
     res.status(500).json("Something went wrong... Internal Server Error");

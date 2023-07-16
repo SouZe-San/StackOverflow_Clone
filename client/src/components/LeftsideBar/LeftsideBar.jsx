@@ -34,7 +34,7 @@ const LeftsideBar = ({ slideIn, handleSlideIn }) => {
               <p style={{ paddingLeft: "10px" }}> Questions </p>
             </NavLink>
           </button>
-          <button onClick={() => handleSlideIn()} className="nav-btn">
+          <button onClick={handleSlideIn} className="nav-btn">
             <NavLink
               to="/Tags"
               className="side-nav-links"
@@ -44,7 +44,7 @@ const LeftsideBar = ({ slideIn, handleSlideIn }) => {
               <p>Tags</p>
             </NavLink>
           </button>
-          <button onClick={() => handleSlideIn()} className="nav-btn">
+          <button onClick={handleSlideIn} className="nav-btn">
             <NavLink
               to="/Users"
               className="side-nav-links"
@@ -52,6 +52,16 @@ const LeftsideBar = ({ slideIn, handleSlideIn }) => {
               style={{ paddingLeft: "40px" }}
             >
               <p>Users</p>
+            </NavLink>
+          </button>
+          <button onClick={handleSlideIn} className="nav-btn">
+            <NavLink
+              to="/Subscription"
+              className="side-nav-links"
+              activeclassname="active"
+              style={{ paddingLeft: "40px" }}
+            >
+              <p>Subscription</p>
             </NavLink>
           </button>
           <BotIcon />

@@ -8,6 +8,7 @@ import decode from "jwt-decode";
 
 import Avatar from "../Avatar/Avatar";
 import { setCurrentUser } from "../../actions/currentUser";
+
 // Import style sheet
 import "./style.scss";
 

@@ -8,6 +8,8 @@ import userRoutes from "./routes/users.js";
 import questionRoutes from "./routes/Question.js";
 import answerRoutes from "./routes/Answers.js";
 import chatbotRoutes from "./routes/chatbot.js";
+import paymentRoutes from "./routes/payment.js";
+import subscribeRoutes from "./routes/subscribe.js";
 
 dotenv.config();
 // MongoDb Atlas connection
@@ -29,6 +31,8 @@ app.use("/user", userRoutes);
 app.use("/questions", questionRoutes);
 app.use("/answer", answerRoutes);
 app.use("/chatbot", chatbotRoutes);
+app.use("/payment", paymentRoutes);
+app.use("/subscription", subscribeRoutes);
 
 // PORT
 const PORT = process.env.PORT || 5000;

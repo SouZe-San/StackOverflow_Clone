@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-  // baseURL: "http://localhost:5000",
-  baseURL: "https://stackoverflowbackend-oucf.onrender.com",
+  baseURL: "http://localhost:5000",
+  // baseURL: "https://stackoverflowbackend-oucf.onrender.com",
 });
 
 API.interceptors.request.use((req) => {
@@ -39,3 +39,9 @@ export const otpVerify = (otpData) => API.post("/user/verify", otpData);
 
 // Chatbot Routes
 export const sendChatbot = (textDAta) => API.post("/chatbot/send", textDAta);
+
+// Payment Routes
+export const paymentCheckOut = (amount) => API.post("/payment/checkout", amount);
+export const paymentGetKey = () => API.get("/payment/geykey");
+export const subscriptionSet = (amount) => API.patch("/subscription/verify", amount);
+export const subscriptionValidation = (userId) => API.patch("/subscription/validity", userId);

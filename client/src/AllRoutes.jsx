@@ -14,6 +14,8 @@ import Users from "./pages/Users/Users";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import OtpAuth from "./pages/OTPauth/OtpAuth";
 import ChatbotPage from "./pages/Chatbot/ChatbotPage";
+import SubscriptionPage from "./pages/Subscription/SubscriptionPage";
+import Success from "./pages/Subscription/Success";
 
 const AllRoutes = ({ slideIn, handleSlideIn }) => {
   return (
@@ -42,6 +44,11 @@ const AllRoutes = ({ slideIn, handleSlideIn }) => {
         path="/Chatbot"
         element={<ChatbotPage slideIn={slideIn} handleSlideIn={handleSlideIn} />}
       />
+      <Route
+        path="/Subscription"
+        element={<SubscriptionPage slideIn={slideIn} handleSlideIn={handleSlideIn} />}
+      />
+      <Route path="/paymentsuccess" element={<Success />} />
     </Routes>
   );
 };
