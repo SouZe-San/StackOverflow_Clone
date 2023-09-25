@@ -23,4 +23,4 @@ client/*.sw?
 # Server Folder
 
 server/notes.txt
-server/config
+server/config/*.json
